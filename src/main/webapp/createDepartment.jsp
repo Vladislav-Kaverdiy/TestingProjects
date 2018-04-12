@@ -6,7 +6,8 @@
     <title>Create Department</title>
     <%@ include file="/WEB-INF/jspf/siteHeader.jspf"%>
 </head>
-<body>
+
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">

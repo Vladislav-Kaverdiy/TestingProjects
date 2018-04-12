@@ -1,0 +1,8 @@
+
+.gitignore
+.gradle/
+.idea/workspace.xml
+build/
+out/
+src/main/webapp/layouts/
+src/test/resources/
