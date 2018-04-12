@@ -1,5 +1,3 @@
-import database.dao.DepartmentDao;
-import database.manager.DBManager;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -7,9 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DaoTest {
-
-    private DepartmentDao departmentDao = new DepartmentDao();
-    private DBManager dbManager = new DBManager();
 
     @Test
     public void checkConnectionToDb(){

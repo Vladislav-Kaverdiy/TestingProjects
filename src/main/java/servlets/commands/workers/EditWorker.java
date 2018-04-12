@@ -1,7 +1,7 @@
 package servlets.commands.workers;
 
+import database.dao.WorkerDaoDaoImpl;
 import database.dao.WorkerDao;
-import database.frames.FrameWorker;
 import exception.AppException;
 import bean.Worker;
 import servlets.Path;
@@ -27,17 +27,17 @@ public class EditWorker implements Command {
             return Path.EDIT_WORKER_PAGE;
         }
 
-        FrameWorker frameWorker = new WorkerDao();
+        WorkerDao workerDao = new WorkerDaoDaoImpl();
 
         Integer workerId = Integer.parseInt(request.getParameter("workerId"));
 
-        Worker worker = frameWorker.findWorkerById(workerId);
+        Worker worker = workerDao.findWorkerById(workerId);
         worker.setFirstName(request.getParameter("firstName"));
         worker.setLastName(request.getParameter("lastName"));
         worker.setAge(Integer.valueOf(request.getParameter("age")));
         worker.setEmail(request.getParameter("email"));
         worker.setPhone(request.getParameter("phone"));
-        frameWorker.updateWorker(worker);
+        workerDao.updateWorker(worker);
         return CommandContainer.get(CommandTypes.MANAGE_DEPARTMENT).execute(request, response);
     }
 

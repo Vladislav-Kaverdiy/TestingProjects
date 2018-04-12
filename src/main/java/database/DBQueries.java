@@ -1,7 +1,7 @@
 package database;
 
 public interface DBQueries {
-    // Queries for Department, DepartmentDao class
+    // Queries for Department, DepartmentDaoDaoImpl class
     String SQL_FIND_ALL_DEPARTMENTS = "SELECT * FROM departments";
     String SQL_FIND_DEPARTMENTS_BY_ID = "SELECT * from departments WHERE department_id=?";
     String SQL_INSERT_DEPARTMENT = "INSERT INTO departments(full_name, importance, register_date)VALUE(?,?,?)";
@@ -11,7 +11,7 @@ public interface DBQueries {
 
 
 
-    //Queries for Worker, WorkerDao class
+    //Queries for Worker, WorkerDaoDaoImpl class
     String SQL_INSERT_WORKER = "INSERT INTO workers(first_name, last_name, age, email, phone, register_date, department_id )VALUE(?,?,?,?,?,?,?)";
     String SQL_FIND_ALL_WORKERS_BY_DEPARTMENT_ID = "SELECT * FROM workers WHERE department_id=?";
     String SQL_FIND_WORKER_BY_ID = "SELECT * from workers WHERE worker_id=?";

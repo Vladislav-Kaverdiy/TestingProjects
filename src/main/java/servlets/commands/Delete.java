@@ -1,9 +1,9 @@
 package servlets.commands;
 
+import database.dao.DepartmentDaoDaoImpl;
+import database.dao.WorkerDaoDaoImpl;
 import database.dao.DepartmentDao;
 import database.dao.WorkerDao;
-import database.frames.FrameDepartment;
-import database.frames.FrameWorker;
 import exception.AppException;
 
 
@@ -22,16 +22,16 @@ public class Delete implements Command {
 
             Integer.parseInt(request.getParameter("departmentId"));
 
-            FrameDepartment frameDepartment = new DepartmentDao();
-            frameDepartment.deleteDepartmentById(departmentId);
+            DepartmentDao departmentDao = new DepartmentDaoDaoImpl();
+            departmentDao.deleteDepartmentById(departmentId);
 
 
         } else {
 
             Integer workerId = Integer.parseInt(request.getParameter("workerId"));
 
-            FrameWorker frameWorker = new WorkerDao();
-            frameWorker.deleteWorkerById(workerId);
+            WorkerDao workerDao = new WorkerDaoDaoImpl();
+            workerDao.deleteWorkerById(workerId);
 
 
         }

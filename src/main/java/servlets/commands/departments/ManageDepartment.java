@@ -1,7 +1,7 @@
 package servlets.commands.departments;
 
+import database.dao.DepartmentDaoDaoImpl;
 import database.dao.DepartmentDao;
-import database.frames.FrameDepartment;
 import exception.AppException;
 import exception.Messages;
 import bean.Department;
@@ -21,8 +21,8 @@ public class ManageDepartment implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, AppException {
         try {
             LOG.debug("Command starts");
-            FrameDepartment frameDepartment =  new DepartmentDao();
-            List<Department> department = frameDepartment.getDepartments();
+            DepartmentDao departmentDao =  new DepartmentDaoDaoImpl();
+            List<Department> department = departmentDao.getDepartments();
             LOG.trace("Get all departments");
             request.setAttribute("department", department);
 

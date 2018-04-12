@@ -1,7 +1,7 @@
 package servlets.commands.workers;
 
+import database.dao.WorkerDaoDaoImpl;
 import database.dao.WorkerDao;
-import database.frames.FrameWorker;
 import exception.AppException;
 import exception.Messages;
 import bean.Worker;
@@ -25,9 +25,9 @@ public class ManageWorker implements Command {
         try {
             LOG.debug("Command starts");
 
-            FrameWorker frameWorker = new WorkerDao();
+            WorkerDao workerDao = new WorkerDaoDaoImpl();
             Integer departmentId = Integer.parseInt(request.getParameter("departmentId"));
-            List<Worker> worker = frameWorker.getWorkerByDepartmentId(departmentId);
+            List<Worker> worker = workerDao.getWorkerByDepartmentId(departmentId);
 
             LOG.trace("Get worker of departmentId--> " + departmentId);
             request.setAttribute("worker", worker);

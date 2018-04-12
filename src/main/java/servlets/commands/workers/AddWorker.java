@@ -1,7 +1,7 @@
 package servlets.commands.workers;
 
+import database.dao.WorkerDaoDaoImpl;
 import database.dao.WorkerDao;
-import database.frames.FrameWorker;
 import exception.AppException;
 import exception.Messages;
 import bean.Worker;
@@ -44,8 +44,8 @@ public class AddWorker implements Command {
 
             LOG.trace("Get request parameters and crete worker--> "
                     + worker.toString());
-            FrameWorker frameWorker = new WorkerDao();
-            frameWorker.addWorkers(worker);
+            WorkerDao workerDao = new WorkerDaoDaoImpl();
+            workerDao.addWorkers(worker);
 
         } catch (Exception ex) {
             LOG.error(Messages.ERR_CANNOT_ADD_WORKER, ex);

@@ -1,7 +1,7 @@
 package servlets.commands.departments;
 
+import database.dao.DepartmentDaoDaoImpl;
 import database.dao.DepartmentDao;
-import database.frames.FrameDepartment;
 import exception.AppException;
 import exception.Messages;
 import bean.Department;
@@ -13,7 +13,6 @@ import servlets.validators.DepartmentValidator;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -40,8 +39,8 @@ public class CreateDepartment implements Command {
 
             LOG.trace("Get request parameters and department--> "
                     + department.toString());
-            FrameDepartment frameDepartment =  new DepartmentDao();
-            frameDepartment.createDepartment(department);
+            DepartmentDao departmentDao =  new DepartmentDaoDaoImpl();
+            departmentDao.createDepartment(department);
 
         } catch (Exception ex) {
             LOG.error(Messages.ERR_CANNOT_CREATE_DEPARTMENT, ex);

@@ -1,7 +1,7 @@
 package servlets.commands.departments;
 
+import database.dao.DepartmentDaoDaoImpl;
 import database.dao.DepartmentDao;
-import database.frames.FrameDepartment;
 import exception.AppException;
 import bean.Department;
 import servlets.Path;
@@ -27,13 +27,13 @@ public class EditDepartment implements Command {
             return Path.EDIT_DEPARTMENT;
         }
 
-        FrameDepartment frameDepartment =  new DepartmentDao();
+        DepartmentDao departmentDao =  new DepartmentDaoDaoImpl();
         Integer departmentId = Integer.parseInt(request.getParameter("departmentId"));
 
-        Department department = frameDepartment.findDepartmentById(departmentId);
+        Department department = departmentDao.findDepartmentById(departmentId);
         department.setFullName(request.getParameter("fullName"));
         department.setImportance(Integer.valueOf((request.getParameter("importance"))));
-        frameDepartment.updateDepartment(department);
+        departmentDao.updateDepartment(department);
 
 
 
